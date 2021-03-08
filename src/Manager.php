@@ -4,6 +4,7 @@ namespace Vsch\TranslationManager;
 
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Events\Dispatcher;
@@ -390,7 +391,7 @@ class Manager
             $this->augmentedGroupReverseList = [];
 
             foreach ($groupList as $group) {
-                if (starts_with($group, ["vnd:", "wbn:"])) {
+                if (Str::startsWith($group, ["vnd:", "wbn:"])) {
                     // we need this one
                     $parts = explode('.', $group, 2);
                     if (count($parts) === 2) {
